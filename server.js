@@ -47,7 +47,13 @@ app.post('/api/upload',upload.single('photo'), function (req, res) {
         })
       }
 });
+app.get('/read', function(req,res){
+  var fs = require("fs");
 
+fs.readFile("C:/Users/MANISHA/file-try/uploads/photo-1558592894929..txt", function(err, buf) {
+  console.log(buf.toString());
+});
+});
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, function () {

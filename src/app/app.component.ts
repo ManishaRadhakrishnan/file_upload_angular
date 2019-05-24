@@ -1,6 +1,7 @@
 import { Component, OnInit  } from '@angular/core';
 import {  FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
 const UploadURL = 'http://localhost:3000/api/upload';
+
 var reader = new FileReader();
 
 @Component({
@@ -11,7 +12,7 @@ var reader = new FileReader();
 export class AppComponent implements OnInit{
   title = 'Upload a file';
   public uploader: FileUploader = new FileUploader({url: UploadURL, itemAlias: 'photo'});
-  fileContent: string = '';
+  fileContent: any = '';
   ngOnInit() {
     this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
@@ -21,7 +22,7 @@ export class AppComponent implements OnInit{
          }
      };
 }
-public onChange(): void {
+public onChange(){
    let file = "C:/Users/MANISHA/file-try/uploads/photo-1558592894929..txt";
    let fileReader: FileReader = new FileReader();
    // let self = this;
@@ -29,6 +30,7 @@ public onChange(): void {
    //   self.fileContent = fileReader.result;
    // }
   this.fileContent= fileReader.readAsText(file);
+  console.log(this.fileContent);
  }
 // reader.onload = function(e) {
 //   var text = reader.result;
