@@ -27,9 +27,6 @@
       Upload an Image
 </button>
 
-<button type="button" class="btn btn-success btn-s"
-  (click)="onChange()">
-      Read text
-</button>
+<input type="file"  (change)="onChange($event)"/>
 <!-- <h3>File Content</h3>
   <pre> {{fileContent}} </pre> -->

@@ -13,7 +13,7 @@ let storage = multer.diskStorage({
       cb(null, DIR);
     },
     filename: (req, file, cb) => {
-      cb(null, file.fieldname + '-' + Date.now() + '.' + path.extname(file.originalname));
+      cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
     }
 });
 let upload = multer({storage: storage});
@@ -33,7 +33,7 @@ app.get('/api', function (req, res) {
   res.end('file catcher example');
 });
 
-app.post('/api/upload',upload.single('photo'), function (req, res) {
+app.post('/api/upload',upload.single('sdyuihfkjn'), function (req, res) {
     if (!req.file) {
         console.log("No file received");
         return res.send({
@@ -43,7 +43,10 @@ app.post('/api/upload',upload.single('photo'), function (req, res) {
       } else {
         console.log('file received successfully');
         return res.send({
-          success: true
+          success: true,
+          file_source : req.file["path"],
+          file_destination : req.file["destination"],
+          file_final_name : req.file["final_name"]
         })
       }
 });
