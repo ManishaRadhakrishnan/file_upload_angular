@@ -23,11 +23,13 @@ export class AppComponent implements OnInit{
          }
      };
 }
-public onChange(event){
+public onChange(event, output){
    let file = event.target.files[0];
+   console.log(file);
    let fileReader = new FileReader();
     fileReader.onload = (e) => {
       console.log(fileReader.result);
+      output.innerHTML = fileReader.result
     }
     fileReader.readAsText(file);
 
